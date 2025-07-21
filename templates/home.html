@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MediBot - Healthcare Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      background: url("/static/images/doc.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero-box {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+      margin: 20px 0;
+    }
+
+    .hero .btn {
+      padding: 10px 30px;
+      font-weight: 500;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hero .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .hero .btn:active {
+      transform: scale(0.98);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .navbar {
+      padding: 15px 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">🩺MediBot</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path == '/features' %}active{% endif %}" href="/features">Features</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path == '/about' %}active{% endif %}" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path == '/chatbot' %}active{% endif %}" href="/chatbot">MediBot Assistant</a></li>
+
+          {% if session.get('role') == 'admin' %}
+            <li class="nav-item"><a class="nav-link" href="/admin/appointments">Manage Appointments</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="/login_admin">Admin Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-box">
+      <h1>Your Personal Healthcare Assistant</h1>
+      <p>MediBot provides instant medical guidance, symptom analysis, and health information anytime, anywhere. Get reliable healthcare support at your fingertips.</p>
+      <div class="mt-4">
+        <a href="/chatbot" class="btn btn-primary me-3">Chat with MediBot</a>
+        <a href="/features" class="btn btn-success">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-5 bg-white" data-aos="fade-up">
+    <div class="container">
+      <h2 class="text-center mb-4">Key Features</h2>
+      <div class="row text-center">
+        <div class="col-md-4" data-aos="zoom-in">
+          <h4>🎤 Voice Commands</h4>
+          <p>Talk to your bot using your voice — just like JARVIS!</p>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <h4>🔍 Google Health Info</h4>
+          <p>Get live info scraped from Google for your symptoms or queries.</p>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <h4>🏥 Appointments & Hospitals</h4>
+          <p>Book appointments and get suggestions for nearby hospitals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3 mt-4">
+    <p>&copy; 2025 MediBot. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

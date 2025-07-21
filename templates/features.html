@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Healthcare Chatbot | Features</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: url("/static/images/doc.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .section-overlay {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 60px 0;
+    }
+
+    .card {
+      transition: all 0.3s ease-in-out;
+      border-radius: 12px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      font-weight: bold;
+      color: #003366;
+    }
+
+    .card-title {
+      color: #004080;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">🩺MediBot</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path == '/features' %}active{% endif %}" href="/features">Features</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path == '/about' %}active{% endif %}" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path == '/chatbot' %}active{% endif %}" href="/chatbot">Chatbot</a></li>
+          {% if session.get('role') == 'admin' %}
+            <li class="nav-item"><a class="nav-link" href="/admin/appointments">Manage Appointments</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="/login_admin">Admin Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Features Content -->
+  <section class="section-overlay">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up">What Our Chatbot Can Do</h2>
+      <div class="row g-4">
+
+        <div class="col-md-6" data-aos="fade-up">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h4 class="card-title">🗣 Voice Command Input</h4>
+              <p class="card-text">Interact with the chatbot using your voice. Ask health-related questions hands-free, just like talking to a personal assistant.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h4 class="card-title">🔍 Google Health Info</h4>
+              <p class="card-text">The chatbot fetches real-time health information from Google based on your query, helping you make informed decisions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h4 class="card-title">📅 Appointment Booking</h4>
+              <p class="card-text">Book appointments with nearby clinics or doctors directly through the chatbot interface.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h4 class="card-title">🏥 Nearby Hospital Locator</h4>
+              <p class="card-text">The chatbot uses location services or maps to recommend nearby hospitals or medical centers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h4 class="card-title">💬 Symptom-Based Answers</h4>
+              <p class="card-text">Ask the chatbot about symptoms like fever, cold, cough, and it will provide possible reasons and next steps (non-diagnostic).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h4 class="card-title">📜 Chat Summary</h4>
+              <p class="card-text">View or download your chat session in PDF format to share with a healthcare provider.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3">
+    <p>&copy; 2025 Healthcare Chatbot. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
